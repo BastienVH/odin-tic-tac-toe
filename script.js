@@ -1,9 +1,13 @@
 
 const gameBoard = (() => {
+  // cache DOM elements
   const boardElement = document.querySelector("div.board");
   const boardContent = ['O','X','X','O','X','O','X','O','X'];
   
-  const populateBoard = () => {
+  // populate board with pre-made array
+  render();
+
+  function render() {
     for (const element of boardContent) {
       let cell = document.createElement('div');
       cell.classList.add('cell');
@@ -12,7 +16,7 @@ const gameBoard = (() => {
     }
   };
 
-  return {boardContent, populateBoard}
+  return {boardContent}
 })();
 
 const playerFactory = (symbol) => {
@@ -21,6 +25,3 @@ const playerFactory = (symbol) => {
 
 const player1 = playerFactory('X');
 const player2 = playerFactory('O');
-
-// Populate the board with prebuilt array
-gameBoard.populateBoard()
