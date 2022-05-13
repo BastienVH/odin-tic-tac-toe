@@ -8,10 +8,11 @@ const gameBoard = (() => {
   render();
 
   function render() {
-    for (const element of boardContent) {
+    for (i = 0; i < boardContent.length; i++) {
       let cell = document.createElement('div');
       cell.classList.add('cell');
-      cell.innerText = element;
+      cell.innerText = boardContent[i];
+      cell.dataset.place = i;
       boardElement.appendChild(cell);
     }
   };
