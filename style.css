@@ -2,7 +2,13 @@
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
   justify-items: center;
-  gap: 10px;
-  width: 200px;
+  width: 180px;
   background-color: beige;
+}
+
+.cell {
+  height: 60px;
+  width: 60px;
+  margin: 0;
+  /* padding: 4px; */
 }
