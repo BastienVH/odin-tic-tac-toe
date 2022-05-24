@@ -5,9 +5,12 @@ const game = (() => {
   function makeMove(event) {
     // find which cell was clicked
     let number = gameBoard.getPlace(event);
+    //check if move is possible
+    if (gameBoard.checkValidityOfMove(number)) {
     // place X in that cell
     gameBoard.placeSymbol(getCurrentPlayer(), number);
     currentMove++;
+    }
   }
 
   function getCurrentPlayer() {
@@ -64,7 +67,16 @@ const gameBoard = (function() {
     render();
   }
 
-  return {getPlace, placeSymbol, emptyBoard, render}
+  function checkValidityOfMove(index) {
+    // check if array is empty string at index
+    if (boardContent[index] == '') {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  return {getPlace, placeSymbol, emptyBoard, render, checkValidityOfMove}
 })();
 
 
