@@ -1,11 +1,23 @@
 //game object
 const game = (() => {
+  let currentMove = 1;
+
   function makeMove(event) {
     // find which cell was clicked
     let number = gameBoard.getPlace(event);
     // place X in that cell
-    gameBoard.placeSymbol('X', number);
+    gameBoard.placeSymbol(getCurrentPlayer(), number);
+    currentMove++;
   }
+
+  function getCurrentPlayer() {
+    if (currentMove % 2 == 0) {
+      return 'O'
+    } else {
+    return 'X'
+    }
+  }
+
   return {makeMove}
 })();
 
