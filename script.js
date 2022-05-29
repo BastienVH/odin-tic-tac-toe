@@ -7,7 +7,7 @@ const game = (() => {
     let number = gameBoard.getPlace(event);
     //check if move is possible
     if (gameBoard.checkValidityOfMove(number)) {
-    // place X in that cell
+    // place symbol of current player in that cell
     gameBoard.placeSymbol(getCurrentPlayer(), number);
     currentMove++;
     }
