@@ -9,6 +9,9 @@ const game = (() => {
     if (gameBoard.checkValidityOfMove(number)) {
     // place symbol of current player in that cell
     gameBoard.placeSymbol(getCurrentPlayer(), number);
+    if (gameBoard.checkForWin() == true) {
+      console.log(`Game was won by ${getCurrentPlayer()}!`);
+    }
     currentMove++;
     }
   }
