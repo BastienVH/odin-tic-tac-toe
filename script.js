@@ -76,7 +76,34 @@ const gameBoard = (function() {
     }
   }
 
-  return {getPlace, placeSymbol, emptyBoard, render, checkValidityOfMove}
+  function checkForWin() {
+    // check rows for 3 identical values
+    if (areEqual(boardContent[0], boardContent[1], boardContent[2]) == true || areEqual(boardContent[3], boardContent[4], boardContent[5]) == true || areEqual(boardContent[6], boardContent[7], boardContent[8]) == true) {
+      return true;
+    }
+    // check columns for 3 identical values
+    if (areEqual(boardContent[0], boardContent[3], boardContent[6]) == true || areEqual(boardContent[1], boardContent[4], boardContent[7]) == true || areEqual(boardContent[2], boardContent[5], boardContent[8]) == true) {
+      return true;
+    } 
+    // check diagonals for 3 identical values
+    if (areEqual(boardContent[0], boardContent[4], boardContent[8]) == true || areEqual(boardContent[2], boardContent[4], boardContent[6]) == true) {
+      return true;
+    }
+    return false;
+  }
+
+  // helper function to check if 3 values are equal and not empty
+  // Idea source: https://stackoverflow.com/a/9973399
+  function areEqual(a, b, c) {
+    if (a == '' || b == '' || c == '') {
+      return false;
+    } else if (a == b & b == c) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  return {getPlace, placeSymbol, emptyBoard, render, checkValidityOfMove, checkForWin}
 })();
 
 
