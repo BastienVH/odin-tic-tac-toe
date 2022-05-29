@@ -1,5 +1,7 @@
 //game object
 const game = (() => {
+  const winnerDisplay = document.querySelector('.winnerDisplay');
+
   let currentMove = 1;
 
   function makeMove(event) {
@@ -10,7 +12,7 @@ const game = (() => {
     // place symbol of current player in that cell
     gameBoard.placeSymbol(getCurrentPlayer(), number);
     if (gameBoard.checkForWin() == true) {
-      console.log(`Game was won by ${getCurrentPlayer()}!`);
+      displayWinner();
     }
     currentMove++;
     }
@@ -22,6 +24,10 @@ const game = (() => {
     } else {
     return 'X'
     }
+  }
+
+  function displayWinner() {
+    winnerDisplay.innerText = `Congratulations, ${getCurrentPlayer()} is the winner!`;
   }
 
   return {makeMove}
