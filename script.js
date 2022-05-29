@@ -36,11 +36,23 @@ const game = (() => {
 const gameBoard = (function() {
   //cache DOM elements
   const boardElement = document.querySelector("div.board");
+  const startBtn = document.querySelector('#startBtn');
+
+  // add function to start new game to startBtn
+  startBtn.addEventListener('click', startNewGame);
+
   // empty array
-  const boardContent = ['', '','', '','', '','', '','',]
+  let boardContent = ['', '','', '','', '','', '','',]
   
   //populate board with pre-made array
   render();
+
+  function startNewGame() {
+    // empty array
+    boardContent = ['', '','', '','', '','', '','',];
+    // render empty board
+    render();
+  }
 
   function emptyBoard() {
     while (boardElement.lastChild) {
