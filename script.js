@@ -9,12 +9,15 @@ const game = (() => {
     let number = gameBoard.getPlace(event);
     //check if move is possible
     if (gameBoard.checkValidityOfMove(number)) {
-    // place symbol of current player in that cell
-    gameBoard.placeSymbol(getCurrentPlayer(), number);
-    if (gameBoard.checkForWin() == true) {
-      displayWinner();
-    }
-    currentMove++;
+      // place symbol of current player in that cell
+      gameBoard.placeSymbol(getCurrentPlayer(), number);
+      if (gameBoard.checkForWin() == true) {
+        displayWinner();
+      }
+      currentMove++;
+      if (currentMove == 10) {
+        displayDraw();
+      }
     }
   }
 
@@ -30,7 +33,23 @@ const game = (() => {
     winnerDisplay.innerText = `Congratulations, ${getCurrentPlayer()} is the winner!`;
   }
 
-  return {makeMove}
+  function displayDraw() {
+    winnerDisplay.innerText = 'The game ended in a draw.';
+  }
+
+  function emptyDisplay() {
+    winnerDisplay.innerText = '';
+  }
+
+  // TO BE DELETED WHEN FINISHED
+  function logCurrentMove() {
+    console.log(`currentMove = ${currentMove}`);
+  }
+
+  function resetMoveCounter() {
+    currentMove = 1
+  }
+  return {makeMove, resetMoveCounter, logCurrentMove, emptyDisplay}
 })();
 
 const gameBoard = (function() {
@@ -52,6 +71,8 @@ const gameBoard = (function() {
     boardContent = ['', '','', '','', '','', '','',];
     // render empty board
     render();
+    game.resetMoveCounter();
+    game.emptyDisplay();
   }
 
   function emptyBoard() {
