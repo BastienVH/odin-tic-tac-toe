@@ -7,8 +7,18 @@
 }
 
 .cell {
+  box-sizing: border-box;
   height: 60px;
   width: 60px;
   margin: 0;
-  /* padding: 4px; */
+  border-right: solid 1px lightgray;
+  border-bottom: solid 1px lightgray;
+}
+
+.cell:nth-child(3n) {
+  border-right: none;
+}
+
+.cell:nth-last-child(-n+3) {
+  border-bottom: none;
 }
