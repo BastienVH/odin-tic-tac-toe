@@ -1,9 +1,13 @@
+body {
+  background-color: #354d5f;
+  color: #9fc3ac;
+}
+
 .board {
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
   justify-items: center;
   width: 180px;
-  background-color: beige;
 }
 
 .cell {
@@ -11,8 +15,8 @@
   height: 60px;
   width: 60px;
   margin: 0;
-  border-right: solid 1px lightgray;
-  border-bottom: solid 1px lightgray;
+  border-right: solid 1px #44819d;
+  border-bottom: solid 1px #1a759f;
 }
 
 .cell:nth-child(3n) {
