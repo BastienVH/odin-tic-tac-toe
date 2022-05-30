@@ -2,7 +2,9 @@
 const game = (() => {
   const winnerDisplay = document.querySelector('.winnerDisplay');
 
+  // define starting parameters
   let currentMove = 1;
+  let gameOver = false;
 
   function makeMove(event) {
     // find which cell was clicked
@@ -13,10 +15,12 @@ const game = (() => {
       gameBoard.placeSymbol(getCurrentPlayer(), number);
       if (gameBoard.checkForWin() == true) {
         displayWinner();
+        gameOver = true;
       }
       currentMove++;
       if (currentMove == 10) {
         displayDraw();
+        gameOver = true;
       }
     }
   }
@@ -49,7 +53,12 @@ const game = (() => {
   function resetMoveCounter() {
     currentMove = 1
   }
-  return {makeMove, resetMoveCounter, logCurrentMove, emptyDisplay}
+
+  function isOver() {
+    return gameOver;
+  }
+
+  return {makeMove, resetMoveCounter, logCurrentMove, emptyDisplay, isOver}
 })();
 
 const gameBoard = (function() {
@@ -110,12 +119,14 @@ const gameBoard = (function() {
   }
 
   function checkValidityOfMove(index) {
-    // check if array is empty string at index
-    if (boardContent[index] == '') {
-      return true
-    } else {
-      return false
+    // check if game is over
+    if (game.isOver() == false) {
+      // check if array is empty string at index
+      if (boardContent[index] == '') {
+        return true
+      }
     }
+    return false;
   }
 
   function checkForWin() {
