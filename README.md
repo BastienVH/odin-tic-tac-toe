@@ -1,7 +1,7 @@
 # odin-tic-tac-toe
 An web implementation of the game Tic-Tac-Toe.
 
-# Number of pomodoro's (25 minutes each): 5
+## Time taken to complete: 3h 47m (29/05/2022)
 
 ## To do:
 - flesh out game object
