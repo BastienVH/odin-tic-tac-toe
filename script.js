@@ -71,6 +71,8 @@ const gameBoard = (function() {
   //cache DOM elements
   const boardElement = document.querySelector("div.board");
   const startBtn = document.querySelector('#startBtn');
+  const inputPlayer1 = document.getElementById('player1');
+  const inputPlayer2 = document.getElementById('player2');
 
   // add function to start new game to startBtn
   startBtn.addEventListener('click', startNewGame);
@@ -82,6 +84,8 @@ const gameBoard = (function() {
   render();
 
   function startNewGame() {
+    // Save the player names to each player object
+    storePlayerNames();
     // empty array
     boardContent = ['', '','', '','', '','', '','',];
     // render empty board
@@ -163,6 +167,12 @@ const gameBoard = (function() {
       return false;
     }
   }
+
+  function storePlayerNames() {
+    player1.name = inputPlayer1.value;
+    player2.name = inputPlayer2.value;
+  }
+  
   return {getPlace, placeSymbol, emptyBoard, render, checkValidityOfMove, checkForWin}
 })();
 
