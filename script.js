@@ -13,15 +13,17 @@ const game = (() => {
     if (gameBoard.checkValidityOfMove(number)) {
       // place symbol of current player in that cell
       gameBoard.placeSymbol(getCurrentPlayer(), number);
-      if (gameBoard.checkForWin() == true) {
+      // check for winning combinations
+      if (gameBoard.checkForWin() == true ) {
         displayWinner();
         gameOver = true;
       }
-      currentMove++;
-      if (currentMove == 10) {
+      if (gameBoard.checkForWin() == false && currentMove == 9) {
         displayDraw();
         gameOver = true;
       }
+      // increase Move counter by 1
+      currentMove++;
     }
   }
 
