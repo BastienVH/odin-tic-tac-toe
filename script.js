@@ -4,7 +4,7 @@ const game = (() => {
 
   // define starting parameters
   let currentMove = 1;
-  let gameOver = false;
+  let gameOver = true;
 
   function makeMove(event) {
     // find which cell was clicked
@@ -12,7 +12,7 @@ const game = (() => {
     //check if move is possible
     if (gameBoard.checkValidityOfMove(number)) {
       // place symbol of current player in that cell
-      gameBoard.placeSymbol(getCurrentPlayer(), number);
+      gameBoard.placeSymbol(getCurrentPlayer().symbol, number);
       // check for winning combinations
       if (gameBoard.checkForWin() == true ) {
         displayWinner();
@@ -28,15 +28,15 @@ const game = (() => {
   }
 
   function getCurrentPlayer() {
-    if (currentMove % 2 == 0) {
-      return 'O'
+    if (currentMove % 2 != 0) {
+      return player1;
     } else {
-    return 'X'
+    return player2;
     }
   }
 
   function displayWinner() {
-    winnerDisplay.innerText = `Congratulations, ${getCurrentPlayer()} is the winner!`;
+    winnerDisplay.innerText = `Congratulations, ${getCurrentPlayer().name} is the winner!`;
   }
 
   function displayDraw() {
@@ -172,7 +172,7 @@ const gameBoard = (function() {
     player1.name = inputPlayer1.value;
     player2.name = inputPlayer2.value;
   }
-  
+
   return {getPlace, placeSymbol, emptyBoard, render, checkValidityOfMove, checkForWin}
 })();
 
