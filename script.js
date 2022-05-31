@@ -60,7 +60,11 @@ const game = (() => {
     return gameOver;
   }
 
-  return {makeMove, resetMoveCounter, logCurrentMove, emptyDisplay, isOver}
+  function resetGame() {
+    gameOver = false;
+  }
+
+  return {makeMove, resetMoveCounter, logCurrentMove, emptyDisplay, isOver, resetGame}
 })();
 
 const gameBoard = (function() {
@@ -84,6 +88,7 @@ const gameBoard = (function() {
     render();
     game.resetMoveCounter();
     game.emptyDisplay();
+    game.resetGame();
   }
 
   function emptyBoard() {
