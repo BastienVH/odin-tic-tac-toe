@@ -20,13 +20,14 @@ button {
 
 .players {
   display: flex;
+  margin: 12px;
 }
 
 .player {
   flex: 1;
 }
 
-.circle {
+.symbol {
   font-family: 'Quicksand', sans-serif;
   font-size: 46px;
 }
