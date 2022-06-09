@@ -16,15 +16,32 @@ input[type="text"] {
 
 button {
   font-family: 'Montserrat', sans-serif;
+  color: #9fc3ac;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #1a759f;
+  border: 2px solid black;
+  border-radius: 6px;
+  padding: 6px 18px;
+  margin: 12px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:active {
+  color: black;
 }
 
 .players {
   display: flex;
-  margin: 12px;
 }
 
 .player {
   flex: 1;
+  margin: 12px;
 }
 
 .symbol {
