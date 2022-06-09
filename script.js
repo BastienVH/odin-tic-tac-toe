@@ -64,7 +64,7 @@ const game = (() => {
     gameOver = false;
   }
 
-  return {makeMove, resetMoveCounter, logCurrentMove, emptyDisplay, isOver, resetGame}
+  return {makeMove, resetMoveCounter, logCurrentMove, emptyDisplay, isOver, resetGame, winnerDisplay}
 })();
 
 const gameBoard = (function() {
@@ -80,10 +80,16 @@ const gameBoard = (function() {
   // empty array
   let boardContent = ['', '','', '','', '','', '','',]
   
-  //populate board with pre-made array
-  render();
+  firstGame();
+
+  function firstGame() {
+    game.winnerDisplay.innerText = "Please enter player names";
+  }
 
   function startNewGame() {
+    if (__checkForEmptyNames() == true) {
+      return
+    }
     // Save the player names to each player object
     storePlayerNames();
     // empty array
@@ -106,6 +112,7 @@ const gameBoard = (function() {
 
   function render() {
     emptyBoard();
+    boardElement.style.display = 'grid';
     for (i = 0; i < boardContent.length; i++) {
       // create empty cell
       let cell = document.createElement('div');
@@ -171,6 +178,14 @@ const gameBoard = (function() {
   function storePlayerNames() {
     player1.name = inputPlayer1.value;
     player2.name = inputPlayer2.value;
+  }
+
+  function __checkForEmptyNames() {
+    if (inputPlayer1.value == '' || inputPlayer2.value == '') {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   return {getPlace, placeSymbol, emptyBoard, render, checkValidityOfMove, checkForWin}
